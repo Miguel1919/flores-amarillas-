@@ -1,0 +1,153 @@
+:root{
+    --gold:#ffd23f;
+    --amber:#f2a900;
+    --cream:#fff6d8;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:inherit;}
+  html,body{
+    margin:0;
+    height:100%;
+    background:#030014;
+    color:var(--cream);
+    font-family:'Quicksand', sans-serif;
+    overflow:hidden;
+    overscroll-behavior:none;
+  }
+  #escenaTres{
+    position:fixed;
+    inset:0;
+    touch-action:none;
+  }
+  #escenaTres canvas{ display:block; }
+
+  .capa-ui{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:5;
+  }
+
+  #introOverlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:24px;
+    pointer-events:auto;
+    background:radial-gradient(ellipse at 50% 50%, rgba(20,10,40,0.15), rgba(3,0,20,0.55));
+    transition:opacity 1s ease;
+  }
+  #introOverlay.oculto{
+    opacity:0;
+    pointer-events:none;
+  }
+  #introOverlay h1{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(2rem, 6vw, 3.2rem);
+    margin:0 0 10px 0;
+    text-shadow:0 0 24px rgba(255,210,63,0.4);
+  }
+  #introOverlay p{
+    margin:0 0 30px 0;
+    color:#cfd2e6;
+    max-width:34ch;
+    line-height:1.6;
+  }
+  #botonViaje{
+    font-family:'Quicksand', sans-serif;
+    font-weight:600;
+    font-size:1rem;
+    color:#2a1c02;
+    background:linear-gradient(180deg, var(--cream), var(--gold));
+    border:none;
+    padding:14px 34px;
+    border-radius:999px;
+    cursor:pointer;
+    box-shadow:0 0 26px rgba(255,210,63,0.5);
+    transition:transform 0.2s ease;
+  }
+  #botonViaje:active{ transform:scale(0.96); }
+
+  #textoViaje{
+    position:absolute;
+    bottom:10%;
+    left:0; right:0;
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:#e8e4ff;
+    opacity:0;
+    transition:opacity 0.6s ease;
+  }
+  #textoViaje.visible{ opacity:0.9; }
+
+  #pistaGiro{
+    position:absolute;
+    top:22px; left:0; right:0;
+    text-align:center;
+    font-size:0.78rem;
+    letter-spacing:0.02em;
+    color:#d8d4f4;
+    opacity:0;
+    transition:opacity 0.8s ease;
+  }
+  #pistaGiro.visible{ opacity:0.75; }
+
+  #fondoModal{
+    position:absolute;
+    inset:0;
+    background:rgba(4,5,14,0.72);
+    backdrop-filter:blur(3px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.35s ease;
+  }
+  #fondoModal.activo{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .carta{
+    position:relative;
+    max-width:440px;
+    width:100%;
+    background:linear-gradient(180deg, #fffaf0, #fdf1cf);
+    color:#3a2c05;
+    border-radius:6px;
+    padding:38px 32px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.15rem;
+    line-height:1.65;
+    transform:scale(0.92) translateY(14px);
+    transition:transform 0.35s ease;
+  }
+  #fondoModal.activo .carta{ transform:scale(1) translateY(0); }
+  .carta p{ margin:0; }
+  .cerrarCarta{
+    position:absolute;
+    top:10px; right:14px;
+    background:none;
+    border:none;
+    font-size:1.4rem;
+    color:#8a6d1a;
+    cursor:pointer;
+    line-height:1;
+    font-family:'Quicksand', sans-serif;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    #introOverlay, #textoViaje, #pistaGiro{ transition:none; }
+  }
